@@ -22,7 +22,12 @@ class MovieFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'description' => $this->faker->text($maxNbChars = 150),
+            'tagline' => $this->faker->sentence($nbWords = 3, $variableNbWords = true),
+            'year' => $this->faker->year($max = 'now'),
+            'budget' => $this->faker->numerify('##########'),
+            'duration' => $this->faker->numberBetween(30, 250),
         ];
     }
 }

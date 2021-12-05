@@ -22,7 +22,9 @@ class DirectorFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name()
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'sex' => $this->faker->randomElement(['male','female'])
         ];
     }
 }

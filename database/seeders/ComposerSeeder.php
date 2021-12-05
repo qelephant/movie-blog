@@ -14,6 +14,6 @@ class ComposerSeeder extends Seeder
      */
     public function run()
     {
-        Composer::factory()->count(20)->create();
+        Composer::factory()->count(40)->create();
     }
 }

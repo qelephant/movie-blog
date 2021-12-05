@@ -15,6 +15,17 @@ class CreateCountryMovieTable extends Migration
     {
         Schema::create('country_movie', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('movie_id');
+
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('cascade');
+            $table->foreign('movie_id')
+                ->references('id')
+                ->on('movies')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

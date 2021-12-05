@@ -14,7 +14,7 @@ class DirectorSeeder extends Seeder
      */
     public function run()
     {
-        Director::factory()->count(20)->create();
-        
+        Director::factory()->count(40)->create();
+
     }
 }

@@ -20,12 +20,17 @@ class MovieRepository {
 
     public function getById($id)
     {
-        return Movie::findOrFail($id);
+        return Movie::withAllRelations()->findOrFail($id);
     }
 
     public function create($params)
     {
-       return Movie::create($params);
+        $movie = Movie::create($params);
+        $movie->countries()->sync($params['country_id']);
+        $movie->composers()->sync($params['composer_id']);
+        $movie->directors()->sync($params['director_id']);
+        $movie->actors()->sync($params['actor_id']);
+        return $movie;
 
     }
 

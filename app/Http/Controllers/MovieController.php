@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Movie\IndexRequest;
+use App\Http\Requests\Movie\StoreRequest;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use App\Repositories\MovieRepository;
@@ -22,9 +23,12 @@ class MovieController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $movies = $this->repository->indexPaginate($request->validated());
+        $data = $this->repository->indexPaginate($request->validated());
 
-        return response($movies, 200);
+        return response([
+            'data' => $data,
+            'status' => 'success'
+        ]);
     }
 
     /**
@@ -33,9 +37,14 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $data = $this->repository->create($request->validated());
+
+        return response([
+            'data' => $data,
+            'status' => 'success'
+        ]);
     }
 
     /**
@@ -46,7 +55,16 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $data = $this->repository->getById($id);
+        } catch (\Throwable $th) {
+            return response(['status' => 'Not found']);
+        }
+
+        return response([
+            'data' => $data,
+            'status' => 'success'
+        ]);
     }
 
     /**
@@ -69,7 +87,14 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $review = $this->repository->destroy($id);
+        } catch (\Throwable $th) {
+            return response(['status' => 'Not found']);
+        }
+        return response([
+            'status' => 'success'
+        ]);
     }
 
 

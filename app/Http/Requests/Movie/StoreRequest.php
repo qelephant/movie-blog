@@ -30,10 +30,14 @@ class StoreRequest extends FormRequest
             'year' => ['required', 'integer'],
             'budget' => ['required', 'integer'],
             'duration' => ['required', 'integer'],
-            'country_id' => ['required', 'integer'],
-            'composer_id' => ['required', 'integer'],
-            'director_id' => ['required', 'integer'],
-            'actor_id' => ['required', 'integer']
+            "country_id"    => "required|array|min:1",
+            "country_id.*"  => "required|string|distinct",
+            "composer_id"    => "required|array|min:1",
+            "composer_id.*"  => "required|string|distinct",
+            "director_id"    => "required|array|min:1",
+            "director_id.*"  => "required|string|distinct",
+            "actor_id"    => "required|array|min:1",
+            "actor_id.*"  => "required|string|distinct"
         ];
     }
 }

@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Review;
 use App\Services\ReviewService;
-use Illuminate\Http\Request;
 use App\Http\Resources\ReviewResource;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ReviewIndexRequest;
 use App\Http\Requests\ReviewStoreRequest;
 use App\Http\Requests\ReviewUpdateRequest;

@@ -76,7 +76,12 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $this->repository->update($request->validated(), $id);
+
+        return response([
+            'data' => $data,
+            'status' => 'success'
+        ]);
     }
 
     /**

@@ -26,11 +26,11 @@ class MovieRepository {
     public function create($params)
     {
         $movie = Movie::create($params);
-        $movie->countries()->sync($params['country_id']);
-        $movie->composers()->sync($params['composer_id']);
-        $movie->directors()->sync($params['director_id']);
-        $movie->actors()->sync($params['actor_id']);
-        return $movie;
+        $movie->countries()->sync($params['country_id'], false);
+        $movie->composers()->sync($params['composer_id'], false);
+        $movie->directors()->sync($params['director_id'], false);
+        $movie->actors()->sync($params['actor_id'], false);
+        return $movie->withAllRelations();
 
     }
 
@@ -44,8 +44,8 @@ class MovieRepository {
 
     public function destroy($id)
     {
-        $Movie = Movie::destroy($id);
-        return $Movie;
+        $movie = Movie::destroy($id);
+        return $movie;
     }
     public function prepareQuery($params)
     {

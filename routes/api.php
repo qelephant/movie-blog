@@ -3,6 +3,7 @@
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,5 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('review', ReviewController::class);
     Route::apiResource('actor', ActorController::class);
     Route::apiResource('movie', MovieController::class);
+    Route::apiResource('country', CountryController::class);
 });

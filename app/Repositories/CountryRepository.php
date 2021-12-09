@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Models\Composer;
+use App\Models\Country;
 use Illuminate\Support\Facades\DB;
 
-class ComposerRepository {
+class CountryRepository {
 
     public function indexPaginate($params)
     {
@@ -21,12 +21,12 @@ class ComposerRepository {
 
     public function getById($id)
     {
-        return Composer::findOrFail($id);
+        return Country::findOrFail($id);
     }
 
     public function create($params)
     {
-       return Composer::create($params);
+       return Country::create($params);
 
     }
 
@@ -40,12 +40,12 @@ class ComposerRepository {
 
     public function destroy($id)
     {
-        $review = Composer::destroy($id);
+        $review = Country::destroy($id);
         return $review;
     }
     public function prepareQuery($params)
     {
-        $query = DB::table('composers');
+        $query = DB::table('countries');
         $query = $this->queryApplyFilter($query, $params);
         $query = $this->queryApplyOrder($query, $params);
         return $query;

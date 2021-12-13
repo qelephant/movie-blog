@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\ActorController;
-use App\Http\Controllers\MovieController;
-use App\Http\Controllers\CountryController;
+use App\Http\Controllers\{AuthController, ReviewController, ActorController, MovieController, CountryController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +18,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
 Route::prefix('v1')->group(function () {
     Route::apiResource('review', ReviewController::class);
     Route::apiResource('actor', ActorController::class);
     Route::apiResource('movie', MovieController::class);
     Route::apiResource('country', CountryController::class);
+
+
 });

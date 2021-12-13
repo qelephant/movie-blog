@@ -16,6 +16,7 @@ class ActorController extends Controller
     public function __construct()
     {
         $this->repository = new ActorRepository;
+        $this->middleware('auth:sanctum')->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.

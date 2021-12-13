@@ -15,6 +15,7 @@ class CountryController extends Controller
     public function __construct()
     {
         $this->repository = new CountryRepository;
+        $this->middleware('auth:sanctum')->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.

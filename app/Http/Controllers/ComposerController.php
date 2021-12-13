@@ -17,6 +17,7 @@ class ComposerController extends Controller
     public function __construct()
     {
         $this->repository = new ComposerRepository;
+        $this->middleware('auth:sanctum')->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.
